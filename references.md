@@ -12,3 +12,4 @@ All the references to build this project.
 
 ## MariaDB
 * http://bit.ly/2TcBf3L
+* https://www.techonthenet.com/mariadb/primary_keys.php
