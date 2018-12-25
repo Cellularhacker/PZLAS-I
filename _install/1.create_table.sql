@@ -66,6 +66,7 @@ CREATE TABLE `BOOK_INFO`
 );
 
 --- ISBN 세부 카테고리 ---
+-- 본 내용은 한국십진분루법을 따릅니다. --
 CREATE TABLE `CATEGORY` 
 (
 	`categoryNo` int primary key,
