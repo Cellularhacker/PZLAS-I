@@ -40,8 +40,9 @@ CREATE TABLE `BOOK`
 --- 대여중 목록 Table ---
 CREATE TABLE `BOOKING` 
 (
-	`studentId` int primary key,
-	`bookNo` int primary key,
+	`bookingNo` varchar(11) primary key,
+	`studentId` int not null,
+	`bookNo` int not null,
 	`bookedDate` datetime not null
 );
 
@@ -71,6 +72,12 @@ CREATE TABLE `CATEGORY`
 	`categoryName` varchar(255) not null
 );
 
+
+---- Adding INDEX ----
+CREATE INDEX IDX_PZLAS_categoryNo on BOOK_INFO(categoryNo);
+
+
+---- Adding Foreign Key ----
 ALTER TABLE `BORROW` ADD FOREIGN KEY (`bookNo`) REFERENCES `BOOK` (`bookNo`);
 
 ALTER TABLE `BORROW` ADD FOREIGN KEY (`studentId`) REFERENCES `MEMBERS` (`studentId`);

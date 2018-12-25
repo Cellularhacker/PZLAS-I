@@ -1,12 +1,12 @@
 --- CHANGE by '' to by 'your_own_passwd'
 -- USER 생성 --
-create user 'PZLAS'@'localhost' ientified by '';
+create user 'PZLAS'@'localhost' identified by '';
 
 -- DATABASE 생성 --
 create database PZLAS;
 
 -- DATABASE ACCESS GRANT FOR USER 'PZLAS'
-grant all privilesges on PZLAS.* to 'PZLAS'@'localhost';
+grant all privileges on PZLAS.* to 'PZLAS'@'localhost';
 
 -- Flush Privileges
 flush privileges;
