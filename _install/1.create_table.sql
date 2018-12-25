@@ -5,6 +5,8 @@
 ----- A) ==> 동아리방이 터지거나, 유사시의 상황이 발생하였을 경우에 기증자 본인에게 돌려받을지 여부
 ----- ※기증자는 반드시 주소와 이메일을 입력해야함
 
+use PZLAS;
+
 --- 동아리원 전체 목록 Table ---
 CREATE TABLE `MEMBERS` 
 (
@@ -74,6 +76,16 @@ CREATE TABLE `CATEGORY`
 );
 
 
+---- Change charset into utf8 ----
+ALTER TABLE MEMBERS convert to charset utf8;
+ALTER TABLE BOOKING convert to charset utf8;
+ALTER TABLE BOOK convert to charset utf8;
+ALTER TABLE BORROW convert to charset utf8;
+ALTER TABLE SUPPLEMENTS convert to charset utf8;
+ALTER TABLE CATEGORY convert to charset utf8;
+commit;
+
+
 ---- Adding INDEX ----
 CREATE INDEX IDX_PZLAS_categoryNo on BOOK_INFO(categoryNo);
 
@@ -89,8 +101,10 @@ ALTER TABLE `BOOK` ADD FOREIGN KEY (`bookOwner`) REFERENCES `MEMBERS` (`studentI
 
 ALTER TABLE `SUPPLEMENTS` ADD FOREIGN KEY (`bookNo`) REFERENCES `BOOK` (`bookNo`);
 
-ALTER TABLE `CATEGORY` ADD FOREIGN KEY (`categoryNo`) REFERENCES `BOOK_INFO` (`categoryNo`);
+ALTER TABLE `BOOK_INFO` ADD FOREIGN KEY (`categoryNo`) REFERENCES `CATEGORY` (`categoryNo`);
 
 ALTER TABLE `BOOKING` ADD FOREIGN KEY (`studentId`) REFERENCES `MEMBERS` (`studentId`);
 
 ALTER TABLE `BOOKING` ADD FOREIGN KEY (`bookNo`) REFERENCES `BOOK` (`bookNo`);
+
+commit;
